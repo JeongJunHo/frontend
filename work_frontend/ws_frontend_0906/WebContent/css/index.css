@@ -1,0 +1,272 @@
+html, body{
+	font-size: 14px;
+	height: 100%;
+}
+
+#outer{
+	width: 1000px;
+	margin: 0 auto;
+}
+
+body{
+	background: #f3f3f3;
+}
+
+header{
+	margin: 0px 60px;
+}
+
+nav{
+	background-image: url("../img/nav_background.png");
+}
+
+nav{
+	border:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	font-size:14px;
+	font-weight:bold;
+}
+
+nav ul{
+	background-image: url("../img/nav_background.png");
+	height:50px;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+nav li{
+	float:left;
+	padding:0px;
+}
+
+nav li a{
+	background-image: url("../img/nav_background.png");
+	color:#cccccc;
+	display:block;
+	font-weight:normal;
+	line-height:50px;
+	margin:0px;
+	padding:0px 25px;
+	text-align:center;
+	text-decoration:none;
+}
+
+nav li a:hover, nav ul li:hover a{
+	background-image: url("../img/nav_background.png");
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
+nav li ul{
+	background-image: url("../img/nav_background.png");
+	display:none;
+	height:auto;
+	padding:0px;
+	margin:0px;
+	border:0px;
+	position:absolute;
+	width:200px;
+	z-index:200;
+	/*top:1em;
+	/*left:0;*/
+}
+
+nav li:hover ul{
+	display:block;
+}
+
+nav li li {
+	background: rgb(109,109,109);
+	display:block;
+	float:none;
+	margin:0px;
+	padding:0px;
+	width:200px;
+}
+
+nav li:hover li a{
+	background:none;
+}
+
+nav li ul a{
+	display:block;
+	height:50px;
+	font-size:12px;
+	font-style:normal;
+	margin:0px;
+	padding:0px 10px 0px 15px;
+	text-align:left;
+}
+
+nav li ul a:hover, nav li ul li:hover a{
+	background: rgb(71,71,71);
+	border:0px;
+	color:#ffffff;
+	text-decoration:none;
+}
+
+nav p{
+	clear:left;
+}
+
+nav #rssImage{
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+#main{
+	margin: 0 80px;
+}
+
+/*
+#main #titleImage{
+	color: white;
+	background: url(../img/movie_image.jpg) no-repeat 230px 0px, url(../img/intro_background.png);
+	background-size: contain;
+	border-radius: 20px;
+	width: 800px;
+	height: 200px;
+	padding: 30px 20px;
+}
+*/
+
+#main #titleImage{
+	color: white;
+	background: url(../img/intro_background.png);
+	background-size: contain;
+	border-radius: 20px;
+	width: 800px;
+	height: 200px;
+	padding: 30px 20px;
+	position: relative;
+}
+
+#main #titlePooImage{
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: 653px;
+    height: 100%;
+    border-radius: 22px;
+}
+
+#main #content{
+	float: left;
+	width: 630px;
+	padding: 5px;
+}
+
+#main aside{
+	float: right;
+	width: 200px;
+	background: url(../img/sidebar_background.png);
+	height: 1400px;
+}
+
+#main aside #sideList{
+	margin-top: 20px;
+	margin-left: 20px;
+	padding: 20px;
+	background: url(../img/sidebar_section_background.png) repeat-x;
+	border-radius: 20px;
+	height: 100%;
+}
+
+#main aside #sideListHeader{
+	margin: 0px;
+}
+
+#main aside #sideList ul{
+	list-style-type: none;
+	padding-left: 20px;
+}
+
+#main .ti_textarea{
+	width: 350px;
+	position: relative;
+    z-index: 2;
+}
+
+#main #content #description #dsctext {
+	-moz-column-count: 2; /* Firefox */
+	-webkit-column-count: 2; /* Safari and Chrome */
+	column-count: 2;
+	
+	-moz-column-gap: 40px; /* Firefox */
+	-webkit-column-gap: 40px; /* Safari and Chrome */
+	column-gap: 40px;
+}
+
+#main #content #description #infoTable td{
+	padding: 10px;
+	color: gray;
+	font-style: italic;
+}
+
+#main #content #description #infoTable th{
+	padding-right: 10px;
+	color: gray;
+	font-style: italic;
+}
+
+#main #content #description a:link,
+#main #content #description a:visited{
+	color: gray;
+}
+
+#main #content #movie_midea img{
+	width: 300px;
+	height: 200px;
+}
+
+#main #content .actor_div{
+	border-radius: 20px;
+	padding: 20px;
+}
+
+#main #content .actor_div:hover{
+	background: #e0e0e0;
+}
+
+#main #content .actor_div .actor_name{
+	margin-right: 150px;
+}
+
+#main #content .actor_div a:link,
+#main #content .actor_div a:visited
+{
+	color: black;
+}
+
+#main #content .actor_div a:link{
+	font-weight: bold;
+}
+
+footer{
+	clear: both;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	background: black;
+}
+
+footer .inline_div{
+	display: inline-block;
+	width: 30%;
+}
+
+footer .inline_div ul{
+	list-style: square;
+    color: gray;
+}
+
+footer .footer_h3{
+	color: white;
+}
+
+footer a, footer h3, footer p{
+	color: gray;
+}

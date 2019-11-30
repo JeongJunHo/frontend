@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jquery exam</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+$( function(){
+	//DOM 구조 생성 직후 호출
+	 //$('li').bind( 'click', click_li ); 
+	 alert('$()');
+} );
+
+window.onload = function(){
+	// 페이지내 모든 자원이 로딩 된 후 호출
+	alert('window.onload');
+	//alert( $('li').size() );
+	 //모든 li를 클릭하면 click_li함수 실행
+	 //$('li').bind( 'click', click_li ); 
+	 //	 $('li').click(  click_li ); 
+}//end onload
+
+function click_li(event) {
+	// 이벤트 핸들러 내에서 this는 이벤트 소스객체이다.
+	console.log( this.innerHTML );
+	$('#result').text( this.innerHTML );
+}
+</script>
+</head>
+<body>
+
+<h1>라면 레시피</h1>
+<ol id="recipe">
+	<li>물 끓이기</li>
+	<li>1분 대기</li>
+	<li>면 넣기</li>
+	<li>건데기 스프 넣기</li>
+	<li>30초 끓이기</li>
+	<li>그릇에 옮기기</li>
+</ol>
+
+<div id="result"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

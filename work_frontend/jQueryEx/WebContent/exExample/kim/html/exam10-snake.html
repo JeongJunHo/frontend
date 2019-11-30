@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>canvas exam</title>
+<script type="text/javascript">
+var cvs, ctx;
+var xparr = [3,3,3,3,3], yparr = [7,6,5,4,3]; //x,y 좌표
+var xwidth = 20, yheight = 20; //사각형의 가로세로크기
+var dir = 'D'; //Up, Down, Left, Right
+var foodx = 10, foody = 10; //먹이좌표
+var bodyIncreaseCount = 0; //먹이먹은경우 늘어날 몸 개수
+var isAlive = true; //뱀이 살아있는지 여부
+
+window.onload = function(){
+	cvs = document.getElementById('cvs');
+	if( cvs && cvs.getContext ){
+		ctx = cvs.getContext('2d');
+		draw_canvas();//캔버스에 그리기
+		document.onkeydown = key_down; //키누름 이벤트 등록
+		document.getElementById('startBtn').onclick = click_start;
+	}else{
+		alert('canvas가 없거나 지원하지 않습니다.');
+	}
+}//end onload
+
+var timerid = null;
+function click_start() {
+	timerid = setInterval( execute_game , 200 );
+	document.getElementById('startBtn').innerHTML = 'Stop';
+	document.getElementById('startBtn').onclick = click_stop;
+}
+function click_stop() {
+	isAlive = false;
+	clearInterval(timerid );
+	timerid = null;
+	document.getElementById('startBtn').innerHTML = 'Start';
+	document.getElementById('startBtn').onclick = click_start;
+}
+
+function execute_game() { //게임 로직 지휘
+	move(); //방향에 따른 좌표 수정
+	check_food(); //먹이 먹었나 검사
+	check_dead();
+	draw_canvas();
+}
+
+function check_dead() {
+	//경계선 검사
+	if( xparr[0] < 0 || yparr[0] < 0 
+			|| xparr[0] > 24 || yparr[0] > 24 ){
+		click_stop();
+	}
+	//몸통 겹침 검사
+	for ( var i = 1; i < xparr.length; i++) {
+		if( xparr[0]==xparr[i] && yparr[0]==yparr[i] ){
+			click_stop();
+			return;
+		}
+	}
+}
+
+function check_food() {
+	if( xparr[0]==foodx && yparr[0]==foody ){//먹이먹었음
+		bodyIncreaseCount += 5;//늘어날몸통갯수 증가
+		//먹이를 위한 새로운 임의의 좌표 생성
+		foodx = Math.floor( Math.random()*1000 ) % 25;
+		foody = Math.floor( Math.random()*1000 ) % 25;
+	}
+}
+
+function move() {
+	//꼬리삭제
+	if( bodyIncreaseCount >0 ){
+		bodyIncreaseCount--;
+	}else{
+		xparr.pop();
+		yparr.pop();
+	}
+	//현재머리좌표추출
+	var xp = xparr[0];
+	var yp = yparr[0];
+	//방향에 따른 좌표이동
+	switch (dir) {
+	case 'L': //Left
+		xp -= 1;
+		break;
+	case 'U': //Up
+		yp -= 1;
+		break;
+	case 'R': //Right
+		xp += 1;
+		break;
+	case 'D': //Down
+		yp += 1;
+		break;
+	}
+	//머리 추가
+	xparr.unshift(xp );
+	yparr.unshift(yp );
+}
+
+function draw_canvas(){
+	//전체 삭제
+	ctx.clearRect(0,0,cvs.width, cvs.height);
+	//테두리 그리기
+	ctx.strokeRect(0,0,cvs.width, cvs.height);
+	//먹이그리기
+	ctx.fillStyle = 'red';
+	ctx.fillRect( foodx*xwidth, foody*yheight, xwidth, yheight);
+	// 죽은 경우 회색으로 칠하기
+	ctx.fillStyle = 'gray';
+	if( !isAlive ){
+		for ( var i = 0; i < xparr.length; i++) {
+			ctx.fillRect( 
+					xparr[i]*xwidth, yparr[i]*yheight, 
+					xwidth, yheight);
+		}//end for
+	}
+	//머리그리기
+	ctx.strokeRect( 
+			xparr[0]*xwidth, yparr[0]*yheight, 
+			xwidth, yheight);
+	for ( var i = 1; i < xparr.length; i++) {
+		ctx.strokeRect( 
+				xparr[i]*xwidth+2, yparr[i]*yheight+2, 
+				xwidth-4, yheight-4);
+	}//end for
+}
+
+function key_down( event ) {
+	document.getElementById('result').innerHTML = event.keyCode;
+	switch (event.keyCode) {
+	case 37: //Left
+		if(dir != 'R') dir = 'L';
+		break;
+	case 38: //Up
+		if(dir != 'D') dir = 'U';
+		break;
+	case 39: //Right
+		if(dir != 'L') dir = 'R';
+		break;
+	case 40: //Down
+		if(dir != 'U') dir = 'D';
+		break;
+	}
+}
+</script>
+</head>
+<body>
+<button id="startBtn">시작</button>
+<div id="result"></div>
+<canvas id="cvs" width="500px" height="500px" ></canvas>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

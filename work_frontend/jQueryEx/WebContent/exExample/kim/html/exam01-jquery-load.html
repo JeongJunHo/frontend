@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jquery load exam</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	$('#server_time').bind('click', click_server_time);
+	$('#naver').bind('click', click_naver);
+	$('#daum').bind('click', click_daum);
+	$('#daum_miniweather').bind('click', click_daum_miniweather);
+}//end onload
+
+function click_server_time() {
+	var url = '../jsp/server-time.jsp';
+	$('#result').load( url );
+}
+function click_naver() {
+	var url = '../jsp/proxy_naver.jsp  #realrank';
+	$('#result').load( url );
+}
+function click_daum() {
+	var url = '../jsp/proxy_daum.jsp  #issueGrp > .rank';
+	$('#result').load( url );
+}
+function click_daum_miniweather() {
+	var url = '../jsp/proxy_daum.jsp  #miniWeather';
+	$('#result').load( url );
+}
+
+</script>
+</head>
+<body>
+
+	<button id="server_time">서버시간</button>
+	<button id="naver">네이버 급상승 검색어</button>
+	<button id="daum">다음 실시간 이슈</button>
+	<button id="daum_miniweather">다음 미니 날씨</button>
+	<div>
+		외부페이지 가져오기 순서
+		<ol>
+		  <li> proxy jsp 만들기</li>
+		  <li> 버튼추가 </li>
+		  <li> 버튼에 이벤트 등록 </li>
+		  <li> 이벤트 핸들러 함수 작성</li>
+		  <li> 프록시 주소에서 가져오기, 데이터 추출을 위해 선택자 사용 </li>
+		</ol>
+
+	</div>
+	<div id="result"></div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

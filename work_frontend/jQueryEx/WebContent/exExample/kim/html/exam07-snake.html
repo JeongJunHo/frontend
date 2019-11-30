@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>canvas exam</title>
+<script type="text/javascript">
+var cvs, ctx;
+var xp = 3, yp = 3; //x,y 좌표
+var xwidth = 20, yheight = 20; //사각형의 가로세로크기
+
+window.onload = function(){
+	cvs = document.getElementById('cvs');
+	if( cvs && cvs.getContext ){
+		ctx = cvs.getContext('2d');
+		draw_canvas();//캔버스에 그리기
+		document.onkeydown = key_down; //키누름 이벤트 등록
+	}else{
+		alert('canvas가 없거나 지원하지 않습니다.');
+	}
+}//end onload
+
+function draw_canvas(){
+	//전체 삭제
+	ctx.clearRect(0,0,cvs.width, cvs.height);
+	//테두리 그리기
+	ctx.strokeRect(0,0,cvs.width, cvs.height);
+	//
+	ctx.strokeRect( xp*xwidth, yp*yheight, xwidth, yheight);
+}
+
+function key_down( event ) {
+	document.getElementById('result').innerHTML = event.keyCode;
+	switch (event.keyCode) {
+	case 37: //Left
+		xp -= 1;
+		break;
+	case 38: //Up
+		yp -= 1;
+		break;
+	case 39: //Right
+		xp += 1;
+		break;
+	case 40: //Down
+		yp += 1;
+		break;
+	}
+	draw_canvas();
+}
+</script>
+</head>
+<body>
+<div id="result"></div>
+<canvas id="cvs" width="500px" height="500px" ></canvas>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

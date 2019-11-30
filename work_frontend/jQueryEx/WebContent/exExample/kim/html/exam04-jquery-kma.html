@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>xml 파싱 exam</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	$('#kma').bind('click', click_kma);
+}//end onload
+function click_kma() {
+	var url = '../jsp/proxy_xml_kma.jsp';
+	$.get(url, parse_kma);
+}//end click_kma
+function parse_kma( data ){
+	var ctg = $('category', data).text();//동네이름
+	$('#result').append( ctg +'<br>');
+	///
+	$('data', data).each( parse_data );
+}
+var dayTxt = ['오늘','내일','모레'];
+function parse_data(index, el){
+	// el은 <data>임
+	var day = $('day', el).text();
+	var hour = $('hour', el).text();
+	var temp = $('temp', el).text();
+	$('#result').append( dayTxt[day]+' '+ hour +'시 ' +temp+'도 <br>');
+}
+</script>
+</head>
+<body>
+
+	<button id="kma">기상예보</button>
+	
+	<div id="result"></div>
+
+</body>
+</html>

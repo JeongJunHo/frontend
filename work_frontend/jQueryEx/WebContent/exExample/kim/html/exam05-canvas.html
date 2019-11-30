@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>canvas exam</title>
+<script type="text/javascript">
+window.onload = function(){
+	var cvs = document.getElementById('cvs');
+	if( cvs && cvs.getContext ){
+		var ctx = cvs.getContext('2d');
+		ctx.fillRect(10,10,55,50);
+		//테두리그리기
+		ctx.strokeRect(0, 0, cvs.width, cvs.height);
+	}else{
+		alert('canvas가 없거나 지원하지 않습니다.');
+	}
+}
+</script>
+</head>
+<body>
+
+<canvas id="cvs" width="500px" height="500px" ></canvas>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+h1{
+	text-align: center !important;
+}
+
+div{
+	border: 1px solid #000;
+}
+
+#header{
+	border: 1px solid #000;
+	text-align: center;
+}
+
+#aside{
+	float: left;
+	height: 740px;
+	width: 200px;
+}
+
+#section{
+	float: left;
+	height: 740px;
+	width: 74%;
+}
+
+#footer{
+	clear: both;
+	text-align: center;
+}
+#outer{
+	border: 1px solid #000;
+	height: 900px;
+	width: 800px;
+	margin: 0 auto;
+}
+.article{
+	display: inline-block;
+	width: 190px;
+	height: 190px;
+	margin: 0px;
+}
+#nav{
+	text-align: center;
+}
